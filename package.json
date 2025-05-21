@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nitro build",
+    "dev": "nitro dev",
+    "prepare": "nitro prepare",
+    "preview": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.812.0",
+    "@flystorage/aws-s3": "^1.1.1",
+    "@flystorage/file-storage": "^1.1.0",
+    "@langchain/community": "^0.3.43",
+    "@langchain/core": "^0.3.56",
+    "@langchain/langgraph": "^0.2.72",
+    "@langchain/openai": "^0.5.10",
+    "@langchain/tavily": "^0.1.1",
+    "cheerio": "^1.0.0",
+    "langchain": "^0.3.26",
+    "marked": "^15.0.12",
+    "md-to-pdf": "^5.2.4",
+    "openai": "^4.100.0",
+    "std-env": "^3.9.0",
+    "uuid": "^11.1.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "nitropack": "latest"
+  }
+}
