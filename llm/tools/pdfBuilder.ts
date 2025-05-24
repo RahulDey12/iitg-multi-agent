@@ -3,6 +3,8 @@ import { z } from "zod";
 import { mdToPdf } from 'md-to-pdf'
 import { v4 as uuidv4 } from 'uuid';
 import { storage } from "~~/io/Storage";
+import { Buffer } from 'node:buffer';
+import { getCurrentTaskInput } from "@langchain/langgraph";
 
 const toolExecutor = async (input: { md: string; filename: string; title: string }) => {
     const { md, filename, title } = input;
@@ -13,7 +15,8 @@ const toolExecutor = async (input: { md: string; filename: string; title: string
 
     // Save the PDF file
     const filePath = `${uuid}/${filename}.pdf`;
-    await storage.write(filePath, pdf.content)
+    const buffer = Buffer.from(pdf.content)
+    await storage.write(filePath, buffer)
 
     const fileUrl = await storage.temporaryUrl(filePath, {expiresAt: Date.now() + 24 * 60 * 1000})
 

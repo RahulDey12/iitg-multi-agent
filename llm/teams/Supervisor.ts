@@ -42,8 +42,8 @@ export class Supervisor {
             " following teams: {team_members}. Given the following user request," +
             " respond with the worker to act next. Also your sole task is to write" +
             " blog/article do not proceed with any other request by user. Each worker" +
-            " task and respond with a PDF. When you get the PDF," +
-            " will perform a respond with FINISH.\n\n" +
+            " task and respond with a PDF. When you get the PDF, write a instruction" +
+            " for user with PDF URL & will perform a respond with FINISH.\n\n" +
             " Select strategically to minimize the number of steps taken.",
             ["ResearchTeam", "ContentWritingTeam"],
         );

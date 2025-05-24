@@ -46,7 +46,7 @@ export class ResearchTeam {
                 " task and respond with their results and status. When finished," +
                 " respond with FINISH.\n\n" +
                 " Select strategically to minimize the number of steps taken.",
-            ["Search", "WebScraper"],
+            ["Search"],
         );
     }
 
@@ -54,13 +54,13 @@ export class ResearchTeam {
         return new StateGraph(ResearchTeamState)
             .addNode<string>("Search", new SearchNode(this.llm).getNode())
             .addNode("supervisor", this.supervisorAgent)
-            .addNode("WebScraper", new ResearchNode(this.llm).getNode())
+            // .addNode("WebScraper", new ResearchNode(this.llm).getNode())
             // Define the control flow
             .addEdge("Search", "supervisor")
-            .addEdge("WebScraper", "supervisor")
+            // .addEdge("WebScraper", "supervisor")
             .addConditionalEdges("supervisor", (x) => x.next, {
                 Search: "Search",
-                WebScraper: "WebScraper",
+                // WebScraper: "WebScraper",
                 FINISH: END,
             })
             .addEdge(START, "supervisor")
